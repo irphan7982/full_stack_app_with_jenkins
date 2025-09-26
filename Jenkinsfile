@@ -5,12 +5,14 @@ pipeline {
         IMAGE_FRONTEND = "fullstack-frontend:latest"
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/irphan7982/fullstack-app.git'
-            }
-        }
+    stage('Checkout') {
+    steps {
+        git branch: 'master',
+            url: 'https://github.com/irphan7982/fullstack-app.git',
+            credentialsId: 'github_test'   // Jenkins credentials ID
+    }
+}
+
 
         stage('Build Backend') {
             steps {
