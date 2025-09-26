@@ -5,14 +5,15 @@ pipeline {
         IMAGE_FRONTEND = "fullstack-frontend:latest"
     }
 
-    stage('Checkout') {
-    steps {
-        git branch: 'master',
-            url: 'https://github.com/irphan7982/fullstack-app.git',
-            credentialsId: 'github_test'   // Jenkins credentials ID
-    }
-}
+    stages {   // ✅ All stages must be inside this block
 
+        stage('Checkout') {
+            steps {
+                git branch: 'master',
+                    url: 'https://github.com/irphan7982/fullstack-app.git',
+                    credentialsId: 'github_test'   // Jenkins credentials ID
+            }
+        }
 
         stage('Build Backend') {
             steps {
@@ -42,6 +43,7 @@ pipeline {
                 sh 'docker-compose up -d --build'
             }
         }
+
     }
 
     post {
@@ -53,4 +55,3 @@ pipeline {
         }
     }
 }
-
