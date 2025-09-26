@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/irphan7982/fullstack-app.git',
+                    url: 'https://github.com/irphan7982/full_stack_app_with_jenkins.git',
                     credentialsId: 'github_test'   // Jenkins credentials ID
             }
         }
